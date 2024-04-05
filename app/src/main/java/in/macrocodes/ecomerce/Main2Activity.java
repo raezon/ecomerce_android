@@ -36,6 +36,10 @@ public class Main2Activity extends AppCompatActivity {
          */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         // relier les proprietes de la class avec les vue
         loginLayout = findViewById(R.id.loginLayout);
         registerLayout = findViewById(R.id.registerLayout);
@@ -81,8 +85,15 @@ public class Main2Activity extends AppCompatActivity {
                 if(username.isEmpty() || password.isEmpty()){
                     Toast.makeText(Main2Activity.this,"Veuillez remplir les champs",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(userService.loginUser(username,password)){
-                        Intent redirection=new Intent(Main2Activity.this,WelcomeActivity.class);
+
+                    if(username.equals("Admin")&&password.equals("Admin")){
+                        Intent redirection=new Intent(Main2Activity.this, ProductActivity.class);
+                        startActivity(redirection);
+                        finish();
+                    }
+                    else
+                        if(userService.loginUser(username,password)){
+                        Intent redirection=new Intent(Main2Activity.this, UserProductActivity.class);
                         startActivity(redirection);
                         finish();
                     }

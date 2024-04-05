@@ -1,16 +1,15 @@
 package in.macrocodes.ecomerce;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -21,7 +20,7 @@ import in.macrocodes.ecomerce.database.MyDatabase;
 import in.macrocodes.ecomerce.database.Product;
 import in.macrocodes.ecomerce.database.ProductDao;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity {
 
     private EditText editTextProductName;
     private EditText editTextProductMark;
@@ -29,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button buttonAddProduct;
     private Button buttonSyncProducts;
     private ListView listViewProducts;
+    private TextView logout;
 
     private MyDatabase database;
     private ProductDao productDao;
@@ -42,6 +42,9 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         editTextProductName = findViewById(R.id.editTextProductName);
         editTextProductMark = findViewById(R.id.editTextProductMark);
@@ -49,6 +52,7 @@ public class WelcomeActivity extends AppCompatActivity {
         buttonAddProduct = findViewById(R.id.buttonAddProduct);
         buttonSyncProducts = findViewById(R.id.buttonSyncProducts);
         listViewProducts = findViewById(R.id.listViewProducts);
+        logout=findViewById(R.id.logoutButton);
 
         // Initialize the database and DAO
         database = MyDatabase.getInstance(this);
@@ -66,6 +70,15 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Display all products when the activity is created
          displayAllProducts();
+
+         logout.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent =new Intent(ProductActivity.this,UserProductActivity.class);
+                 startActivity(intent);
+                 finish();
+             }
+         });
     }
 
     private void addProduct() {
@@ -74,14 +87,15 @@ public class WelcomeActivity extends AppCompatActivity {
         final double productPrice = Double.parseDouble(editTextProductPrice.getText().toString().trim());
 
         if (!productName.isEmpty() && !productMark.isEmpty() && productPrice > 0) {
+
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
                     // Perform database operation on background thread
-                    Product newProduct = new Product();
-                    newProduct.setName(productName);
-                    newProduct.setMark(productMark);
-                    newProduct.setPrice(productPrice);
+                    Product newProduct = new Product(productName,productMark,productPrice);
+                    //newProduct.setName(productName);
+                    //newProduct.setMark(productMark);
+                    //newProduct.setPrice(productPrice);
                     productDao.insert(newProduct);
 
                     // Update UI on the main thread

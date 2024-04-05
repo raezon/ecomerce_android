@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 public abstract class MyDatabase extends RoomDatabase {
     public abstract ProductDao productDao();
 
+
     private static MyDatabase instance;
 
     public static synchronized MyDatabase getInstance(Context context) {

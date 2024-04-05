@@ -1,57 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/interfaceProduit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".WelcomeActivity">
+    tools:context=".ProductActivity">
 
 
-    <EditText
-        android:id="@+id/editTextProductName"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter product name"/>
+        android:background="#27A1D8"
+        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/editTextProductMark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter product mark"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Zidal"
+            android:textColor="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/editTextProductPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter product price"/>
-
-    <!-- ImageView for selecting image -->
+        <TextView
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:text="Logout"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <Button
-            android:id="@+id/buttonSyncProducts"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextProductName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="#03A9F4"
-            android:text="Sync Products" />
+            android:layout_marginBottom="20dp"
+            android:hint="Enter product name" />
 
-        <Button
-            android:id="@+id/buttonAddProduct"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextProductMark"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="#69FF0B"
-            android:text="Add Product" />
+            android:layout_marginBottom="20dp"
+            android:hint="Enter product mark" />
+
+        <EditText
+            android:id="@+id/editTextProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Enter product price" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSyncProducts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="#03A9F4"
+                android:text="Sync Products" />
+
+            <Button
+                android:id="@+id/buttonAddProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="#69FF0B"
+                android:text="Add Product" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listViewProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listViewProducts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+    <!-- ImageView for selecting image -->
+
 </LinearLayout>

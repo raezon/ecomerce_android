@@ -11,6 +11,14 @@ public class Product {
     private String mark;
     private double price;
 
+    // Constructor with parameters
+        public Product(String name, String mark, double price) {
+            this.name = name;
+            this.mark = mark;
+            this.price = price;
+        }
+
+
     // Getters
     public int getId() {
         return id;

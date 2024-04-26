@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <!-- Login Interface -->
     <include
         android:id="@+id/loginLayout"
         layout="@layout/activity_login"

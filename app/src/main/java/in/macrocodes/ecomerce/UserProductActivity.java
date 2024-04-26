@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,10 +20,15 @@ import in.macrocodes.ecomerce.database.Product;
 public class UserProductActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewProducts;
+    private TextView labelLogout;
+
+    private View login;
+    private View register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //R.layout.
         setContentView(R.layout.activity_user_product);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -29,6 +36,17 @@ public class UserProductActivity extends AppCompatActivity {
 
         recyclerViewProducts = findViewById(R.id.recyclerViewProducts);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(this));
+        labelLogout=findViewById(R.id.logoutButton);
+
+
+        labelLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent intent=new Intent(UserProductActivity.this,Main2Activity.class);
+            startActivity(intent);
+            finish();
+            }
+        });
 
         // Assuming you have a list of products
         List<Product> productList = getProductList();

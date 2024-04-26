@@ -82,6 +82,8 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 String username=usernameLogin.getText().toString();
                 String password=passwordLogin.getText().toString();
+               // Intent interfaceProduit=new Intent(Main2Activity.this,Product.class);
+               // startActivity(interfaceProduit);
                 if(username.isEmpty() || password.isEmpty()){
                     Toast.makeText(Main2Activity.this,"Veuillez remplir les champs",Toast.LENGTH_SHORT).show();
                 }else{
@@ -104,7 +106,12 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+        switchToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
 
         switchToRegister.setOnClickListener(new View.OnClickListener() {
             @Override

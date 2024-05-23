@@ -8,18 +8,13 @@ import androidx.room.Update;
 
 import java.util.List;
 
+// c'est une sorte contrat entre userDao et la base de donné
 @Dao
 public interface UserDao {
 
     @Insert
     void insert(User user);
 
-    @Update
-    void update(User user);
-
-    @Delete
-    void delete(User user);
-
-    @Query("select * from users")
-    List<User> selectAll();
+    @Query("SELECT * FROM users WHERE userName = :userName AND password = :password")
+    User login(String userName, String password);
 }

@@ -19,7 +19,7 @@ import in.macrocodes.ecomerce.database.User;
 import in.macrocodes.ecomerce.database.UserDao;
 import in.macrocodes.ecomerce.services.UserService;
 
-public class Main2Activity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     private View loginLayout;
@@ -84,7 +84,7 @@ public class Main2Activity extends AppCompatActivity {
                 String password =passwordRegister.getText().toString();
 
                 if(fullName.isEmpty()|| userName.isEmpty()|| password.isEmpty()){
-                    Toast.makeText(Main2Activity.this,"Vous avez oublier de remplir les champs",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Vous avez oublier de remplir les champs",Toast.LENGTH_LONG).show();
 
                 }else {
                     registerUser(fullName,userName,password);
@@ -103,10 +103,10 @@ public class Main2Activity extends AppCompatActivity {
               //  Toast.makeText(Main2Activity.this, "Username: " + username + "\nPassword: " + password, Toast.LENGTH_SHORT).show();
 
                 if(username.isEmpty() || password.isEmpty()){
-                    Toast.makeText(Main2Activity.this,"Veuillez remplir les champs ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Veuillez remplir les champs ",Toast.LENGTH_SHORT).show();
                 }else{
 
-                        Toast.makeText(Main2Activity.this,"champs remplis",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"champs remplis",Toast.LENGTH_SHORT).show();
                         loginUser(username,password);
                 }
 
@@ -143,7 +143,7 @@ public class Main2Activity extends AppCompatActivity {
                 passwordRegister.getText().clear();
                 registerLayout.setVisibility(View.GONE);
                 loginLayout.setVisibility(View.VISIBLE);
-                Toast.makeText(Main2Activity.this,"Vous avez terminer votre inscription",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Vous avez terminer votre inscription",Toast.LENGTH_LONG).show();
             });
         });
         }
@@ -158,7 +158,7 @@ public class Main2Activity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if (user != null) {
                         Toast.makeText(this, "Login with success", Toast.LENGTH_SHORT).show();
-                        Intent redirection=new Intent(Main2Activity.this, UserProductActivity.class);
+                        Intent redirection=new Intent(MainActivity.this, Product.class);
                         startActivity(redirection);
                         finish();
 
@@ -167,7 +167,7 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 });
             });
-            Toast.makeText(Main2Activity.this, "Result: " + result[0], Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Result: " + result[0], Toast.LENGTH_SHORT).show();
 
         } else {
             runOnUiThread(() -> Toast.makeText(this, "username or password false", Toast.LENGTH_SHORT).show());

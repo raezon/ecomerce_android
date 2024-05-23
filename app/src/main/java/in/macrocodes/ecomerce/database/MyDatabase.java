@@ -7,9 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Product.class, User.class}, version = 3)
+@Database(entities = {User.class}, version = 1)
 public abstract class MyDatabase extends RoomDatabase {
-    public abstract ProductDao productDao();
     public abstract UserDao userDao1();
 
     private static MyDatabase instance;
